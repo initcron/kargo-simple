@@ -26,8 +26,5 @@ spec:
         server: https://kubernetes.default.svc
         namespace: 'guestbook-simple-{{path.basename}}'
       syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
         syncOptions:
           - CreateNamespace=true
