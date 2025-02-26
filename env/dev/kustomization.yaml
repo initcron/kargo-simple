@@ -6,3 +6,5 @@ namespace: guestbook-simple-dev
 images:
 - name: ghcr.io/initcron/guestbook
   newTag: v1.0.4
+patches:
+- path: guestbook-svc.yaml

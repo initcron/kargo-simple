@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/initcron/kargo-simple
+        revision: HEAD
+        directories:
+          - path: "env/*"
+  template:
+    metadata:
+      name: 'guestbook-{{path.basename}}'
+      annotations:
+        debug.path: '{{path.basename}}'
+        kargo.akuity.io/authorized-stage: "kargo-simple:{{path.basename}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/initcron/kargo-simple
+        targetRevision: HEAD
+        path: '{{path}}/'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'guestbook-simple-{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
