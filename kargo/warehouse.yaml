@@ -8,3 +8,7 @@ spec:
   - image:
       repoURL: ghcr.io/initcron/guestbook
       imageSelectionStrategy: SemVer
+  - git:
+      repoURL: https://github.com/initcron/kargo-simple.git
+      includePaths:
+        - base
