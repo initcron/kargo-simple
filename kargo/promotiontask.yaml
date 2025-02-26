@@ -8,7 +8,7 @@ spec:
   - name: repoURL
     value: https://github.com/initcron/kargo-simple.git
   - name: branch
-    value: main
+    value: release
   - name: image
     value: ghcr.io/initcron/guestbook
   - name: openpr
